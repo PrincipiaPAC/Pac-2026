@@ -84,7 +84,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Distinguished Speakers at Principia */}
+      {/* Distinguished Speakers at  Principia */}
       <section className="py-16 md:py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-3 mb-4">
