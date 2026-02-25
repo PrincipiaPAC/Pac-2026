@@ -3,7 +3,7 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
-  basePath: '/pac-website-design',
+  basePath: '/pac-2026',
   images: {
     unoptimized: true,
   },
