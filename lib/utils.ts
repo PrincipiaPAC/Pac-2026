@@ -17,7 +17,7 @@ export function formatDisplayName(fullName: string): string {
 // Helper function to get the correct path for static assets with basePath
 // Use this for images in the public folder when using basePath
 export function getAssetPath(path: string): string {
-  const basePath = '/pac-2026'
+  const basePath = '/Pac-2026'
   // If it's already an external URL, return as-is
   if (path.startsWith('http://') || path.startsWith('https://')) {
     return path
