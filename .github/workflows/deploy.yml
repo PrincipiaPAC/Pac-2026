@@ -31,7 +31,18 @@ jobs:
         run: npm ci
       
       - name: Build
+        env:
+          NODE_ENV: production
         run: npm run build
+      
+      - name: Prepare artifact for Pages
+        run: |
+          if [ -d out/Pac-2026 ]; then
+            cp -r out/Pac-2026 deploy
+          else
+            cp -r out deploy
+          fi
+          ls -la deploy
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -39,7 +50,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './out/Pac-2026'
+          path: './deploy'
 
   deploy:
     environment:
