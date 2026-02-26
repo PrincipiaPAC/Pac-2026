@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Libre_Baskerville, DM_Sans } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
 import { getAssetPath } from "@/lib/utils"
 import "./globals.css"
 
@@ -23,8 +22,8 @@ export const metadata: Metadata = {
     "A Public Awareness Campaign educating, raising awareness, and fostering dialogue about immigrants' right to pursue safety, freedom, and opportunity. April 2–3, 2026 at Principia College.",
   generator: "v0.app",
   icons: {
-    icon: getAssetPath("/favicon.png"),
-    apple: getAssetPath("/favicon.png"),
+    icon: getAssetPath("/icon.svg"),
+    apple: getAssetPath("/icon.svg"),
   },
 }
 
@@ -37,7 +36,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-sans antialiased`}>
         {children}
-        <Analytics />
       </body>
     </html>
   )
