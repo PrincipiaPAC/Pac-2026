@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Calendar, MapPin, Clock } from "lucide-react"
+import { Calendar, MapPin, Clock, Video } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Timeline, type TimelineEntry } from "@/components/ui/timeline"
@@ -129,9 +129,12 @@ export function EventDetails() {
         </div>
 
         {/* Schedule - full width below for better balance and readability */}
-        <Card className="mt-8 bg-white border-none shadow-lg">
+        <Card id="live" className="mt-8 bg-white border-none shadow-lg scroll-mt-24">
           <CardContent className="p-8">
-            <p className="text-lg font-semibold text-[#788668] mb-6">Schedule</p>
+            <p className="text-lg font-semibold text-[#788668] mb-2">Schedule</p>
+            <p className="text-sm text-[#5C5C5C] mb-6">
+              Select sessions stream live on YouTube—use the link on each card when available.
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
               {EVENT_SCHEDULE.map((item, index) => (
                 <div
@@ -146,6 +149,17 @@ export function EventDetails() {
                     {item.time}
                     {item.role ? ` · ${item.role}` : ""}
                   </div>
+                  {item.livestreamUrl ? (
+                    <a
+                      href={item.livestreamUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 mt-2 text-sm font-medium text-[#788668] hover:text-[#6a7659] underline-offset-2 hover:underline"
+                    >
+                      <Video className="w-4 h-4 shrink-0" aria-hidden />
+                      Watch live on YouTube
+                    </a>
+                  ) : null}
                 </div>
               ))}
             </div>

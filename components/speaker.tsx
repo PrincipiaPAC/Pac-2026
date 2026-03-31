@@ -252,6 +252,16 @@ export function Speaker() {
               ))}
             </motion.div>
             <div className="text-center mt-16 pt-8 border-t border-[#F2D497]/40">
+              <p className="text-[#5C5C5C] mb-3 text-base max-w-2xl mx-auto text-pretty">
+                Can&apos;t join in person?{" "}
+                <Link
+                  href="/#live"
+                  className="text-[#788668] font-medium hover:underline underline-offset-2"
+                >
+                  Watch select sessions live on YouTube
+                </Link>{" "}
+                (links also on each speaker&apos;s page when available).
+              </p>
               <p className="text-[#5C5C5C] mb-5 text-lg">
                 Don&apos;t miss these extraordinary conversations
               </p>

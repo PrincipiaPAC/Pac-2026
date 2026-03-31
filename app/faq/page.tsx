@@ -1,3 +1,5 @@
+import type { ReactNode } from "react"
+import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import {
@@ -8,7 +10,7 @@ import {
 } from "@/components/ui/accordion"
 import { HelpCircle } from "lucide-react"
 
-const faqItems = [
+const faqItems: { question: string; answer: ReactNode }[] = [
   {
     question: "Is there really no cost to attend?",
     answer:
@@ -40,9 +42,21 @@ const faqItems = [
       "Yes. Wanamaker Hall is fully accessible. If you have specific accessibility needs, please email pac@principia.edu and we'll ensure you're accommodated.",
   },
   {
+    question: "Can I watch live online?",
+    answer: (
+      <>
+        Yes. Select sessions stream live on YouTube during the conference. Open the{" "}
+        <Link href="/#live" className="text-[#788668] font-medium hover:underline underline-offset-2">
+          schedule on the homepage
+        </Link>{" "}
+        and use &quot;Watch live on YouTube&quot; for your session.
+      </>
+    ),
+  },
+  {
     question: "Will sessions be recorded?",
     answer:
-      "Most sessions will be recorded. All registered attendees will receive access to session recordings within one week of the conference.",
+      "Most sessions will be recorded. All registered attendees will receive access to session recordings within one week of the conference. Livestreams for select sessions are linked from the homepage schedule during the event.",
   },
   {
     question: "How can I get involved beyond attending?",

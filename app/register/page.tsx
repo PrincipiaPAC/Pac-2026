@@ -104,12 +104,36 @@ export default function RegisterPage() {
                 <p className="text-[#3D3D3D]">Wanamaker Hall, Principia College</p>
                 <div className="mt-4 pt-4 border-t border-[#E5DED3]">
                   <p className="text-sm font-medium text-[#788668] mb-2">Schedule</p>
-                  {EVENT_SCHEDULE.map((item, index) => (
-                    <p key={index} className="text-sm text-[#3D3D3D]">
-                      {item.day} {item.time} – {item.speaker}
-                      {item.role ? ` (${item.role})` : ""}
-                    </p>
-                  ))}
+                  <ul className="space-y-2">
+                    {EVENT_SCHEDULE.map((item, index) => (
+                      <li key={index} className="text-sm text-[#3D3D3D]">
+                        <span>
+                          {item.day} {item.time} – {item.speaker}
+                          {item.role ? ` (${item.role})` : ""}
+                        </span>
+                        {item.livestreamUrl ? (
+                          <>
+                            {" "}
+                            <a
+                              href={item.livestreamUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[#788668] font-medium hover:underline underline-offset-2 whitespace-nowrap"
+                            >
+                              Watch live
+                            </a>
+                          </>
+                        ) : null}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-xs text-[#5C5C5C] mt-3">
+                    Remote? Full list:{" "}
+                    <Link href="/#live" className="text-[#788668] font-medium hover:underline">
+                      homepage schedule
+                    </Link>
+                    .
+                  </p>
                 </div>
               </div>
               <Button
@@ -177,20 +201,39 @@ export default function RegisterPage() {
                     className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-3 border-b border-[#E5DED3] last:border-0"
                   >
                     <div className="font-medium text-[#3D3D3D]">{item.speaker}</div>
-                    <div className="flex items-center gap-2 text-[#5C5C5C] text-sm">
-                      <span>{item.day}</span>
-                      <span>·</span>
-                      <span>{item.time}</span>
-                      {item.role && (
-                        <>
-                          <span>·</span>
-                          <span className="text-[#788668] font-medium">{item.role}</span>
-                        </>
-                      )}
+                    <div className="flex flex-col sm:items-end gap-1">
+                      <div className="flex items-center gap-2 text-[#5C5C5C] text-sm">
+                        <span>{item.day}</span>
+                        <span>·</span>
+                        <span>{item.time}</span>
+                        {item.role && (
+                          <>
+                            <span>·</span>
+                            <span className="text-[#788668] font-medium">{item.role}</span>
+                          </>
+                        )}
+                      </div>
+                      {item.livestreamUrl ? (
+                        <a
+                          href={item.livestreamUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm font-medium text-[#788668] hover:underline underline-offset-2"
+                        >
+                          Watch live on YouTube
+                        </a>
+                      ) : null}
                     </div>
                   </div>
                 ))}
               </div>
+              <p className="text-sm text-[#5C5C5C] mt-6 pt-4 border-t border-[#E5DED3]">
+                Joining remotely? All livestream links are also on the homepage{" "}
+                <Link href="/#live" className="text-[#788668] font-medium hover:underline underline-offset-2">
+                  Event Details schedule
+                </Link>
+                .
+              </p>
             </div>
           </div>
         </section>

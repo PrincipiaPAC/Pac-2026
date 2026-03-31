@@ -4,8 +4,9 @@ import React from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, Clock, ArrowRight } from "lucide-react"
+import { ArrowLeft, Clock, ArrowRight, Video } from "lucide-react"
 import { getSpeakerBySlug, publishedSpeakers } from "@/lib/speakers"
+import { getLivestreamUrlForSpeakerSlug } from "@/lib/constants"
 import { getAssetPath } from "@/lib/utils"
 
 const BOOK_AND_PUBLICATION_TITLES = [
@@ -89,6 +90,8 @@ export default async function SpeakerPage({
     ? `${speaker.sessionRole} – ${speaker.sessionTime}`
     : speaker.sessionTime
 
+  const livestreamUrl = getLivestreamUrlForSpeakerSlug(slug)
+
   return (
     <main className="min-h-screen overflow-auto">
       <Header />
@@ -127,6 +130,17 @@ export default async function SpeakerPage({
                   <Clock className="w-5 h-5 flex-shrink-0" />
                   <span>{sessionDisplay}</span>
                 </div>
+                {livestreamUrl ? (
+                  <a
+                    href={livestreamUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 mt-4 text-[#788668] font-medium hover:text-[#6a7659] underline-offset-2 hover:underline"
+                  >
+                    <Video className="w-5 h-5 shrink-0" aria-hidden />
+                    Watch live on YouTube
+                  </a>
+                ) : null}
               </div>
 
               <div>
